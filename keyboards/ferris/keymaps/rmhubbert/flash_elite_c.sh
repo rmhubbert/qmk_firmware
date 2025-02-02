@@ -15,5 +15,5 @@ if [[ ! -f "$DEST_FILE" ]]; then
     exit 1
 fi
 
-echo "Converting to RP2040 format and flashing Ferris Sweep with the new firmware."
-qmk flash -kb ferris/sweep -km rmhubbert -e CONVERT_TO=rp2040_ce
+echo "Flashing the Ferris Sweep with the new Elite-C firmware."
+qmk flash -kb ferris/sweep -km rmhubbert

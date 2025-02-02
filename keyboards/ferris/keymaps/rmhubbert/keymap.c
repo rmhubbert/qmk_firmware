@@ -26,6 +26,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case LSFT_T(KC_F):
             // disable accidental mod when rolling a & f
             return disable_modifier_user(record, KC_LGUI, KC_A, KC_F);
+        case RCTL_T(KC_K):
+            // disable accidental mod when rolling l & k
+            if (!disable_modifier_user(record, KC_RALT, KC_L, KC_K)) return false;
     }
     return true;
 };
