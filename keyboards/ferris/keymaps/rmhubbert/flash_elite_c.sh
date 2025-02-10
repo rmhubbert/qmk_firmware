@@ -1,17 +1,27 @@
 #!/bin/bash
 
-SOURCE_FILE=~/Downloads/ferris_sweep_rmhubbert.json
-DEST_FILE=keymap.json
+KEYMAP_SOURCE=~/Downloads/ferris_sweep_rmhubbert.json
+KEYMAP_TARGET=keymap.json
+RULES_SOURCE=rules_elite_c.mk
+RULES_TARGET=rules.mk
 
-if [[ -f "$SOURCE_FILE" ]]; then
-    cp "$SOURCE_FILE" "$DEST_FILE"
-    echo "Copying '$SOURCE_FILE' to '$DEST_FILE'."
+if [[ -f "$KEYMAP_SOURCE" ]]; then
+    mv "$KEYMAP_SOURCE" "$KEYMAP_TARGET"
+    echo "Moving '$KEYMAP_SOURCE' to '$KEYMAP_TARGET'."
 else
-    echo "Warning: Source file '$SOURCE_FILE' not found. Skipping copy."
+    echo "'$KEYMAP_SOURCE' not found. Using existing keymap.json"
 fi
 
-if [[ ! -f "$DEST_FILE" ]]; then
-    echo "Error: keymap file '$DEST_FILE' is missing. Exiting."
+if [[ -f "$RULES_SOURCE" ]]; then
+    cp "$RULES_SOURCE" "$RULES_TARGET"
+    echo "Copying '$RULES_SOURCE' to '$RULES_TARGET'."
+else
+    echo "Error: rules file '$RULES_SOURCE' not found. Exiting."
+    exit 1
+fi
+
+if [[ ! -f "$KEYMAP_TARGET" ]]; then
+    echo "Error: keymap file '$KEYMAP_TARGET' is missing. Exiting."
     exit 1
 fi
 
