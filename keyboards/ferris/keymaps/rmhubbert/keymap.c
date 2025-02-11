@@ -1,7 +1,7 @@
-#include <stdint.h>
-#include "action.h"
-#include "config.h"
-#include "keycodes.h"
+/*#include <stdint.h>*/
+/*#include "action.h"*/
+/*#include "config.h"*/
+/*#include "keycodes.h"*/
 #include QMK_KEYBOARD_H
 #include "keymap.h"
 #include "features/custom_shift_keys.h"
@@ -97,6 +97,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + offset;
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
+        case TD(TD_LEFT_HOME_THUMB):
+            return TAPPING_TERM + offset;
         default:
             return TAPPING_TERM;
     }
@@ -118,3 +120,84 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
             return QUICK_TAP_TERM;
     }
 }
+
+/*TAP DANCE*/
+
+// Keep track of key presses for Modifier
+typedef struct {
+    bool is_press_action;
+    int  state;
+} tap;
+
+// Key Tap enumerator
+enum {
+    SINGLE_TAP  = 1,
+    SINGLE_HOLD = 2,
+    DOUBLE_TAP  = 3,
+    DOUBLE_HOLD = 4,
+};
+
+// Calculate the correct tap dance action, based on the current state.
+int cur_dance(tap_dance_state_t *state) {
+    if (state->count == 1) {
+        if (state->pressed) {
+            return SINGLE_HOLD;
+        } else {
+            return SINGLE_TAP;
+        }
+    } else if (state->count == 2) {
+        if (state->pressed) {
+            return DOUBLE_HOLD;
+        } else {
+            return DOUBLE_TAP;
+        }
+    } else
+        return 8;
+}
+
+// Left home thumb tap dance
+// SINGLE_TAP = One shot layer 2 (symbol layer).
+// SINGLE_HOLD = Activate layer 1 (movement layer).
+// DOUBLE_TAP = Toggle layer 3 (number layer).
+void left_home_thumb_finished(tap_dance_state_t *state, void *user_data);
+void left_home_thumb_reset(tap_dance_state_t *state, void *user_data);
+
+static tap left_home_thumb_tap_state = {.is_press_action = true, .state = 0};
+
+void left_home_thumb_finished(tap_dance_state_t *state, void *user_data) {
+    left_home_thumb_tap_state.state = cur_dance(state);
+    switch (left_home_thumb_tap_state.state) {
+        case SINGLE_TAP:
+            set_oneshot_layer(2, ONESHOT_START);
+            clear_oneshot_layer_state(ONESHOT_PRESSED);
+            break;
+        case SINGLE_HOLD:
+            layer_on(1);
+            break;
+        case DOUBLE_TAP:
+            layer_move(3);
+            break;
+        case DOUBLE_HOLD:
+            break;
+    }
+}
+
+void left_home_thumb_reset(tap_dance_state_t *state, void *user_data) {
+    switch (left_home_thumb_tap_state.state) {
+        case SINGLE_TAP:
+            break;
+        case SINGLE_HOLD:
+            layer_off(1);
+            break;
+        case DOUBLE_TAP:
+            break;
+        case DOUBLE_HOLD:
+            break;
+    }
+    left_home_thumb_tap_state.state = 0;
+}
+
+// Tap Dance Definitions
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_LEFT_HOME_THUMB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, left_home_thumb_finished, left_home_thumb_reset),
+};
