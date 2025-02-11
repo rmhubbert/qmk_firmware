@@ -37,10 +37,10 @@
       "KC_COMM",
       "KC_DOT",
       "KC_SLSH",
-      "KC_BSPC",
+      "KC_ENT",
       "ANY(TD(TD_LEFT_HOME_THUMB))",
       "KC_SPC",
-      "KC_ENT"
+      "TT(3)"
     ],
     [
       "KC_F1",
@@ -75,7 +75,7 @@
       "KC_CUT",
       "KC_TRNS",
       "KC_TRNS",
-      "KC_TRNS",
+      "KC_BSPC",
       "KC_TRNS"
     ],
     [
@@ -94,7 +94,7 @@
       "LALT(KC_3)",
       "KC_LSFT",
       "KC_NO",
-      "KC_ESC",
+      "KC_NO",
       "KC_LPRN",
       "KC_LCBR",
       "KC_LBRC",
@@ -111,7 +111,7 @@
       "KC_NUHS",
       "KC_TRNS",
       "KC_TRNS",
-      "KC_TRNS",
+      "KC_ESC",
       "KC_TRNS"
     ],
     [
@@ -147,7 +147,7 @@
       "KC_NO",
       "KC_TRNS",
       "TO(0)",
-      "KC_TRNS",
+      "KC_SPC",
       "KC_TRNS"
     ]
   ],

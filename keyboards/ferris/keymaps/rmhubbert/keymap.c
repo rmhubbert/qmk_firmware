@@ -175,7 +175,7 @@ void left_home_thumb_finished(tap_dance_state_t *state, void *user_data) {
             layer_on(1);
             break;
         case DOUBLE_TAP:
-            layer_move(3);
+            /*layer_move(3);*/
             break;
         case DOUBLE_HOLD:
             break;
