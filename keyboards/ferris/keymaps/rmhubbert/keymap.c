@@ -87,7 +87,7 @@ bool disable_modifier_user(keyrecord_t *record, uint16_t keycode, uint16_t first
  * @return
  */
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    uint16_t offset = 70;
+    uint16_t offset = 50;
     switch (keycode) {
         case LGUI_T(KC_A):
             return TAPPING_TERM + offset;
