@@ -98,7 +98,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
         case TD(TD_LEFT_HOME_THUMB):
-            return TAPPING_TERM + offset;
+            return TAPPING_TERM + 100;
         default:
             return TAPPING_TERM;
     }
@@ -157,8 +157,7 @@ int cur_dance(tap_dance_state_t *state) {
 
 // Left home thumb tap dance
 // SINGLE_TAP = One shot layer 2 (symbol layer).
-// SINGLE_HOLD = Activate layer 1 (movement layer).
-// DOUBLE_TAP = Toggle layer 3 (number layer).
+// SINGLE_HOLD = Hold layer 1 (movement layer).
 void left_home_thumb_finished(tap_dance_state_t *state, void *user_data);
 void left_home_thumb_reset(tap_dance_state_t *state, void *user_data);
 
