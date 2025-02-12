@@ -97,10 +97,31 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + offset;
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
-        case TD(TD_LEFT_HOME_THUMB):
-            return TAPPING_TERM + 120;
         default:
             return TAPPING_TERM;
+    }
+}
+
+/**
+ * @brief Custom per key permissive hold settings.
+ *
+ * @param keycode
+ * @param record
+ * @return
+ */
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LSFT_T(KC_F):
+            return true;
+        case LCTL_T(KC_D):
+            return true;
+        case RSFT_T(KC_J):
+            return true;
+        case RCTL_T(KC_K):
+            return true;
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
     }
 }
 
@@ -130,29 +151,35 @@ typedef struct {
 } tap;
 
 // Key Tap enumerator
-enum {
-    SINGLE_TAP  = 1,
-    SINGLE_HOLD = 2,
-    DOUBLE_TAP  = 3,
-    DOUBLE_HOLD = 4,
-};
+typedef enum {
+    TD_NONE,
+    TD_UNKNOWN,
+    TD_SINGLE_TAP,
+    TD_SINGLE_HOLD,
+    TD_DOUBLE_TAP,
+    TD_DOUBLE_HOLD,
+    TD_DOUBLE_SINGLE_TAP, // Send two single taps
+} td_state_t;
 
 // Calculate the correct tap dance action, based on the current state.
 int cur_dance(tap_dance_state_t *state) {
     if (state->count == 1) {
-        if (state->pressed) {
-            return SINGLE_HOLD;
-        } else {
-            return SINGLE_TAP;
-        }
+        if (state->interrupted || !state->pressed) return TD_SINGLE_TAP;
+        // Key has not been interrupted, but the key is still held. Means you want to send a 'HOLD'.
+        else
+            return TD_SINGLE_HOLD;
     } else if (state->count == 2) {
-        if (state->pressed) {
-            return DOUBLE_HOLD;
-        } else {
-            return DOUBLE_TAP;
-        }
+        // TD_DOUBLE_SINGLE_TAP is to distinguish between typing "pepper", and actually wanting a double tap
+        // action when hitting 'pp'. Suggested use case for this return value is when you want to send two
+        // keystrokes of the key, and not the 'double tap' action/macro.
+        if (state->interrupted)
+            return TD_DOUBLE_SINGLE_TAP;
+        else if (state->pressed)
+            return TD_DOUBLE_HOLD;
+        else
+            return TD_DOUBLE_TAP;
     } else
-        return 8;
+        return TD_UNKNOWN;
 }
 
 // Left home thumb tap dance
@@ -166,31 +193,31 @@ static tap left_home_thumb_tap_state = {.is_press_action = true, .state = 0};
 void left_home_thumb_finished(tap_dance_state_t *state, void *user_data) {
     left_home_thumb_tap_state.state = cur_dance(state);
     switch (left_home_thumb_tap_state.state) {
-        case SINGLE_TAP:
+        case TD_SINGLE_TAP:
             set_oneshot_layer(2, ONESHOT_START);
             clear_oneshot_layer_state(ONESHOT_PRESSED);
             break;
-        case SINGLE_HOLD:
+        case TD_SINGLE_HOLD:
             layer_on(1);
             break;
-        case DOUBLE_TAP:
+        case TD_DOUBLE_TAP:
             /*layer_move(3);*/
             break;
-        case DOUBLE_HOLD:
+        case TD_DOUBLE_HOLD:
             break;
     }
 }
 
 void left_home_thumb_reset(tap_dance_state_t *state, void *user_data) {
     switch (left_home_thumb_tap_state.state) {
-        case SINGLE_TAP:
+        case TD_SINGLE_TAP:
             break;
-        case SINGLE_HOLD:
+        case TD_SINGLE_HOLD:
             layer_off(1);
             break;
-        case DOUBLE_TAP:
+        case TD_DOUBLE_TAP:
             break;
-        case DOUBLE_HOLD:
+        case TD_DOUBLE_HOLD:
             break;
     }
     left_home_thumb_tap_state.state = 0;
