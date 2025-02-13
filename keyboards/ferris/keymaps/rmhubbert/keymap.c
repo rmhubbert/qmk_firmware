@@ -97,6 +97,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + offset;
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
+        case TD(TD_LEFT_HOME_THUMB):
+            return TAPPING_TERM - 90;
         default:
             return TAPPING_TERM;
     }
@@ -118,6 +120,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         case RSFT_T(KC_J):
             return true;
         case RCTL_T(KC_K):
+            return true;
+        case TD(TD_LEFT_HOME_THUMB):
             return true;
         default:
             // Do not select the hold action when another key is tapped.
@@ -200,11 +204,6 @@ void left_home_thumb_finished(tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_HOLD:
             layer_on(1);
             break;
-        case TD_DOUBLE_TAP:
-            /*layer_move(3);*/
-            break;
-        case TD_DOUBLE_HOLD:
-            break;
     }
 }
 
@@ -214,10 +213,6 @@ void left_home_thumb_reset(tap_dance_state_t *state, void *user_data) {
             break;
         case TD_SINGLE_HOLD:
             layer_off(1);
-            break;
-        case TD_DOUBLE_TAP:
-            break;
-        case TD_DOUBLE_HOLD:
             break;
     }
     left_home_thumb_tap_state.state = 0;
