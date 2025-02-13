@@ -13,7 +13,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_LBRC, KC_RBRC}, // Shift [ is ]
     {KC_LCBR, KC_RCBR}, // Shift { is }
     {KC_LPRN, KC_RPRN}, // Shift ( is )
-    {KC_SPC, KC_BSPC},  // Shift space is backspace
+                        /*{KC_SPC, KC_BSPC},  // Shift space is backspace*/
 };
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
@@ -98,8 +98,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + offset;
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
-        /*case TD(TD_LEFT_HOME_THUMB):*/
-        /*    return TAPPING_TERM - 80;*/
+        case TD(TD_LEFT_HOME_THUMB):
+            return TAPPING_TERM - 60;
         default:
             return TAPPING_TERM;
     }
@@ -148,8 +148,8 @@ typedef enum {
 // Calculate the correct tap dance action, based on the current state.
 int cur_dance(tap_dance_state_t *state) {
     if (state->count == 1) {
-        if (state->interrupted || !state->pressed) return TD_SINGLE_TAP;
-        // Key has not been interrupted, but the key is still held. Means you want to send a 'HOLD'.
+        if (!state->pressed)
+            return TD_SINGLE_TAP;
         else
             return TD_SINGLE_HOLD;
     } else
