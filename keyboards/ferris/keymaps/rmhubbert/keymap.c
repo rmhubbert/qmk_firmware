@@ -13,6 +13,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_LBRC, KC_RBRC}, // Shift [ is ]
     {KC_LCBR, KC_RCBR}, // Shift { is }
     {KC_LPRN, KC_RPRN}, // Shift ( is )
+    {KC_SPC, KC_BSPC},  // Shift space is backspace
 };
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
@@ -97,8 +98,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + offset;
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
-        case TD(TD_LEFT_HOME_THUMB):
-            return TAPPING_TERM - 90;
+        /*case TD(TD_LEFT_HOME_THUMB):*/
+        /*    return TAPPING_TERM - 80;*/
         default:
             return TAPPING_TERM;
     }
@@ -129,40 +130,19 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-/**
- * @brief Custom per key quick tap terms. This is needed to allow multi tap toggles when you have
- * set QUICK_TAP_TERM to 0.
- *
- * @param keycode
- * @param record
- * @return
- */
-uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case TT(3):
-            return TAPPING_TERM;
-        default:
-            return QUICK_TAP_TERM;
-    }
-}
-
 /*TAP DANCE*/
 
 // Keep track of key presses for Modifier
 typedef struct {
-    bool is_press_action;
-    int  state;
-} tap;
+    int state;
+} td_state;
 
 // Key Tap enumerator
 typedef enum {
     TD_NONE,
-    TD_UNKNOWN,
     TD_SINGLE_TAP,
     TD_SINGLE_HOLD,
-    TD_DOUBLE_TAP,
-    TD_DOUBLE_HOLD,
-    TD_DOUBLE_SINGLE_TAP, // Send two single taps
+    TD_UNKNOWN,
 } td_state_t;
 
 // Calculate the correct tap dance action, based on the current state.
@@ -172,16 +152,6 @@ int cur_dance(tap_dance_state_t *state) {
         // Key has not been interrupted, but the key is still held. Means you want to send a 'HOLD'.
         else
             return TD_SINGLE_HOLD;
-    } else if (state->count == 2) {
-        // TD_DOUBLE_SINGLE_TAP is to distinguish between typing "pepper", and actually wanting a double tap
-        // action when hitting 'pp'. Suggested use case for this return value is when you want to send two
-        // keystrokes of the key, and not the 'double tap' action/macro.
-        if (state->interrupted)
-            return TD_DOUBLE_SINGLE_TAP;
-        else if (state->pressed)
-            return TD_DOUBLE_HOLD;
-        else
-            return TD_DOUBLE_TAP;
     } else
         return TD_UNKNOWN;
 }
@@ -192,7 +162,7 @@ int cur_dance(tap_dance_state_t *state) {
 void left_home_thumb_finished(tap_dance_state_t *state, void *user_data);
 void left_home_thumb_reset(tap_dance_state_t *state, void *user_data);
 
-static tap left_home_thumb_tap_state = {.is_press_action = true, .state = 0};
+static td_state left_home_thumb_tap_state = {.state = 0};
 
 void left_home_thumb_finished(tap_dance_state_t *state, void *user_data) {
     left_home_thumb_tap_state.state = cur_dance(state);

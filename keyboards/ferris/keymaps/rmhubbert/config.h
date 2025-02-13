@@ -59,3 +59,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #define TD_LEFT_HOME_THUMB 0
+#define TD_HOLD_TERM 100
