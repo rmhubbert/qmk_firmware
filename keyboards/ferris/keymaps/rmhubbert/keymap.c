@@ -99,7 +99,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
         case TD(TD_LEFT_HOME_THUMB):
-            return TAPPING_TERM - 60;
+            return TAPPING_TERM - 50;
         default:
             return TAPPING_TERM;
     }
@@ -185,7 +185,7 @@ void left_home_thumb_reset(tap_dance_state_t *state, void *user_data) {
             layer_off(1);
             break;
     }
-    left_home_thumb_tap_state.state = 0;
+    left_home_thumb_tap_state.state = TD_NONE;
 }
 
 // Tap Dance Definitions
