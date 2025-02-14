@@ -37,10 +37,10 @@
       "KC_COMM",
       "KC_DOT",
       "KC_SLSH",
-      "KC_ENT",
+      "KC_ESC",
       "ANY(TD(TD_LEFT_HOME_THUMB))",
       "KC_SPC",
-      "LT(3,KC_ESC)"
+      "LT(3,KC_ENT)"
     ],
     [
       "KC_F1",
