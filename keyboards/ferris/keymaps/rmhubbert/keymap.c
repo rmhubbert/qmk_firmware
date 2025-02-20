@@ -4,19 +4,18 @@
 /*#include "keycodes.h"*/
 #include QMK_KEYBOARD_H
 #include "keymap.h"
-#include "features/custom_shift_keys.h"
+/*#include "features/custom_shift_keys.h"*/
 
 /**
  * @brief Define any custom shift keys.
  */
-const custom_shift_key_t custom_shift_keys[] = {
-    {KC_LBRC, KC_RBRC}, // Shift [ is ]
-    {KC_LCBR, KC_RCBR}, // Shift { is }
-    {KC_LPRN, KC_RPRN}, // Shift ( is )
-                        /*{KC_SPC, KC_BSPC},  // Shift space is backspace*/
-};
+/*const custom_shift_key_t custom_shift_keys[] = {*/
+/*    {KC_LBRC, KC_RBRC}, // Shift [ is ]*/
+/*    {KC_LCBR, KC_RCBR}, // Shift { is }*/
+/*    {KC_LPRN, KC_RPRN}, // Shift ( is )*/
+/*};*/
 
-uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+/*uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);*/
 
 /**
  * @brief Custom keycode processing.
@@ -26,9 +25,9 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
  * @return
  */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_custom_shift_keys(keycode, record)) {
-        return false;
-    }
+    /*if (!process_custom_shift_keys(keycode, record)) {*/
+    /*    return false;*/
+    /*}*/
 
     switch (keycode) {
         case LGUI_T(KC_A):
@@ -133,62 +132,62 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 /*TAP DANCE*/
 
 // Keep track of key presses for Modifier
-typedef struct {
-    int state;
-} td_state;
+/*typedef struct {*/
+/*    int state;*/
+/*} td_state;*/
 
 // Key Tap enumerator
-typedef enum {
-    TD_NONE,
-    TD_SINGLE_TAP,
-    TD_SINGLE_HOLD,
-    TD_UNKNOWN,
-} td_state_t;
+/*typedef enum {*/
+/*    TD_NONE,*/
+/*    TD_SINGLE_TAP,*/
+/*    TD_SINGLE_HOLD,*/
+/*    TD_UNKNOWN,*/
+/*} td_state_t;*/
 
 // Calculate the correct tap dance action, based on the current state.
-int cur_dance(tap_dance_state_t *state) {
-    if (state->count == 1) {
-        if (!state->pressed)
-            return TD_SINGLE_TAP;
-        else
-            return TD_SINGLE_HOLD;
-    } else
-        return TD_UNKNOWN;
-}
+/*int cur_dance(tap_dance_state_t *state) {*/
+/*    if (state->count == 1) {*/
+/*        if (!state->pressed)*/
+/*            return TD_SINGLE_TAP;*/
+/*        else*/
+/*            return TD_SINGLE_HOLD;*/
+/*    } else*/
+/*        return TD_UNKNOWN;*/
+/*}*/
 
 // Left home thumb tap dance
 // SINGLE_TAP = One shot layer 2 (symbol layer).
 // SINGLE_HOLD = Hold layer 1 (movement layer).
-void left_home_thumb_finished(tap_dance_state_t *state, void *user_data);
-void left_home_thumb_reset(tap_dance_state_t *state, void *user_data);
+/*void left_home_thumb_finished(tap_dance_state_t *state, void *user_data);*/
+/*void left_home_thumb_reset(tap_dance_state_t *state, void *user_data);*/
 
-static td_state left_home_thumb_tap_state = {.state = 0};
+/*static td_state left_home_thumb_tap_state = {.state = 0};*/
 
-void left_home_thumb_finished(tap_dance_state_t *state, void *user_data) {
-    left_home_thumb_tap_state.state = cur_dance(state);
-    switch (left_home_thumb_tap_state.state) {
-        case TD_SINGLE_TAP:
-            set_oneshot_layer(2, ONESHOT_START);
-            clear_oneshot_layer_state(ONESHOT_PRESSED);
-            break;
-        case TD_SINGLE_HOLD:
-            layer_on(1);
-            break;
-    }
-}
+/*void left_home_thumb_finished(tap_dance_state_t *state, void *user_data) {*/
+/*    left_home_thumb_tap_state.state = cur_dance(state);*/
+/*    switch (left_home_thumb_tap_state.state) {*/
+/*        case TD_SINGLE_TAP:*/
+/*            set_oneshot_layer(2, ONESHOT_START);*/
+/*            clear_oneshot_layer_state(ONESHOT_PRESSED);*/
+/*            break;*/
+/*        case TD_SINGLE_HOLD:*/
+/*            layer_on(1);*/
+/*            break;*/
+/*    }*/
+/*}*/
 
-void left_home_thumb_reset(tap_dance_state_t *state, void *user_data) {
-    switch (left_home_thumb_tap_state.state) {
-        case TD_SINGLE_TAP:
-            break;
-        case TD_SINGLE_HOLD:
-            layer_off(1);
-            break;
-    }
-    left_home_thumb_tap_state.state = TD_NONE;
-}
+/*void left_home_thumb_reset(tap_dance_state_t *state, void *user_data) {*/
+/*    switch (left_home_thumb_tap_state.state) {*/
+/*        case TD_SINGLE_TAP:*/
+/*            break;*/
+/*        case TD_SINGLE_HOLD:*/
+/*            layer_off(1);*/
+/*            break;*/
+/*    }*/
+/*    left_home_thumb_tap_state.state = TD_NONE;*/
+/*}*/
 
 // Tap Dance Definitions
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_LEFT_HOME_THUMB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, left_home_thumb_finished, left_home_thumb_reset),
-};
+/*tap_dance_action_t tap_dance_actions[] = {*/
+/*    [TD_LEFT_HOME_THUMB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, left_home_thumb_finished, left_home_thumb_reset),*/
+/*};*/

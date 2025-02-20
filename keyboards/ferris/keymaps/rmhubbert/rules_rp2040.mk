@@ -1,2 +1,2 @@
 SRC += features/custom_shift_keys.c
-TAP_DANCE_ENABLE = yes
+# TAP_DANCE_ENABLE = yes
