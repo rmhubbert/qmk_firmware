@@ -2,6 +2,7 @@
 /*#include "action.h"*/
 /*#include "config.h"*/
 /*#include "keycodes.h"*/
+#include "config.h"
 #include QMK_KEYBOARD_H
 #include "keymap.h"
 /*#include "features/custom_shift_keys.h"*/
@@ -97,8 +98,12 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + offset;
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
-        case TD(TD_LEFT_HOME_THUMB):
-            return TAPPING_TERM - 50;
+        case RSFT_T(KC_F):
+            return TAPPING_TERM - 20;
+        case LSFT_T(KC_J):
+            return TAPPING_TERM - 20;
+        /*case TD(TD_LEFT_HOME_THUMB):*/
+        /*    return TAPPING_TERM - 50;*/
         default:
             return TAPPING_TERM;
     }
@@ -121,8 +126,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
             return true;
         case RCTL_T(KC_K):
             return true;
-        case TD(TD_LEFT_HOME_THUMB):
-            return true;
+        /*case TD(TD_LEFT_HOME_THUMB):*/
+        /*    return true;*/
         default:
             // Do not select the hold action when another key is tapped.
             return false;
