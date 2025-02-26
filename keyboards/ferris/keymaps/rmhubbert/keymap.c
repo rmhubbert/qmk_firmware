@@ -87,27 +87,26 @@ bool disable_modifier_user(keyrecord_t *record, uint16_t keycode, uint16_t first
  * @param record
  * @return
  */
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    uint16_t offset = 50;
-    switch (keycode) {
-        case LGUI_T(KC_A):
-            return TAPPING_TERM + offset;
-        case LALT_T(KC_S):
-            return TAPPING_TERM + offset;
-        case RGUI_T(KC_SCLN):
-            return TAPPING_TERM + offset;
-        case RALT_T(KC_L):
-            return TAPPING_TERM + offset;
-        case RSFT_T(KC_F):
-            return TAPPING_TERM - 20;
-        case LSFT_T(KC_J):
-            return TAPPING_TERM - 20;
-        /*case TD(TD_LEFT_HOME_THUMB):*/
-        /*    return TAPPING_TERM - 50;*/
-        default:
-            return TAPPING_TERM;
-    }
-}
+
+/*    switch (keycode) {*/
+/*        case LGUI_T(KC_A):*/
+/*            return TAPPING_TERM + offset;*/
+/*        case LALT_T(KC_S):*/
+/*            return TAPPING_TERM + offset;*/
+/*        case RGUI_T(KC_SCLN):*/
+/*            return TAPPING_TERM + offset;*/
+/*        case RALT_T(KC_L):*/
+/*            return TAPPING_TERM + offset;*/
+/*        case RSFT_T(KC_F):*/
+/*            return TAPPING_TERM - 30;*/
+/*        case LSFT_T(KC_J):*/
+/*            return TAPPING_TERM - 30;*/
+/*        case TD(TD_LEFT_HOME_THUMB):*/
+/*            return TAPPING_TERM - 50;*/
+/*        default:*/
+/*            return TAPPING_TERM;*/
+/*    }*/
+/*}*/
 
 /**
  * @brief Custom per key permissive hold settings.
@@ -116,23 +115,23 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
  * @param record
  * @return
  */
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LSFT_T(KC_F):
-            return true;
-        case LCTL_T(KC_D):
-            return true;
-        case RSFT_T(KC_J):
-            return true;
-        case RCTL_T(KC_K):
-            return true;
-        /*case TD(TD_LEFT_HOME_THUMB):*/
-        /*    return true;*/
-        default:
-            // Do not select the hold action when another key is tapped.
-            return false;
-    }
-}
+/*bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {*/
+/*    switch (keycode) {*/
+/*        case LSFT_T(KC_F):*/
+/*            return true;*/
+/*        case LCTL_T(KC_D):*/
+/*            return true;*/
+/*        case RSFT_T(KC_J):*/
+/*            return true;*/
+/*        case RCTL_T(KC_K):*/
+/*            return true;*/
+/*        case TD(TD_LEFT_HOME_THUMB):*/
+/*            return true;*/
+/*        default:*/
+/*            // Do not select the hold action when another key is tapped.*/
+/*            return false;*/
+/*    }*/
+/*}*/
 
 /*TAP DANCE*/
 
