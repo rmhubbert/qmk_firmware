@@ -117,23 +117,23 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
  * @param record
  * @return
  */
-/*bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {*/
-/*    switch (keycode) {*/
-/*        case LSFT_T(KC_F):*/
-/*            return true;*/
-/*        case LCTL_T(KC_D):*/
-/*            return true;*/
-/*        case RSFT_T(KC_J):*/
-/*            return true;*/
-/*        case RCTL_T(KC_K):*/
-/*            return true;*/
-/*        case TD(TD_LEFT_HOME_THUMB):*/
-/*            return true;*/
-/*        default:*/
-/*            // Do not select the hold action when another key is tapped.*/
-/*            return false;*/
-/*    }*/
-/*}*/
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LSFT_T(KC_F):
+            return true;
+        case LCTL_T(KC_D):
+            return true;
+        case RSFT_T(KC_J):
+            return true;
+        case RCTL_T(KC_K):
+            return true;
+        case TD(TD_LEFT_HOME_THUMB):
+            return true;
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
+    }
+}
 
 /*TAP DANCE*/
 
