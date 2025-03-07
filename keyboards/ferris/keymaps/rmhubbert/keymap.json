@@ -17,7 +17,7 @@
       "KC_I",
       "KC_O",
       "KC_P",
-      "LGUI_T(KC_A)",
+      "KC_A",
       "LALT_T(KC_S)",
       "LCTL_T(KC_D)",
       "LSFT_T(KC_F)",
@@ -26,7 +26,7 @@
       "RSFT_T(KC_J)",
       "RCTL_T(KC_K)",
       "RALT_T(KC_L)",
-      "RGUI_T(KC_SCLN)",
+      "KC_SCLN",
       "KC_Z",
       "KC_X",
       "KC_C",
@@ -40,7 +40,7 @@
       "LT(3,KC_ESC)",
       "OSL(1)",
       "LT(2,KC_SPC)",
-      "KC_ENT"
+      "RGUI_T(KC_ENT)"
     ],
     [
       "KC_EXLM",

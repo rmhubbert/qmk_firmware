@@ -100,9 +100,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
         case RSFT_T(KC_F):
-            return TAPPING_TERM - 30;
+            return TAPPING_TERM - 45;
         case LSFT_T(KC_J):
-            return TAPPING_TERM - 30;
+            return TAPPING_TERM - 45;
         /*case TD(TD_LEFT_HOME_THUMB):*/
         /*    return TAPPING_TERM - 50;*/
         default:
