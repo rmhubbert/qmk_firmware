@@ -89,7 +89,7 @@ bool disable_modifier_user(keyrecord_t *record, uint16_t keycode, uint16_t first
  * @return
  */
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    uint16_t offset = 50;
+    uint16_t offset = 100;
     switch (keycode) {
         case LGUI_T(KC_A):
             return TAPPING_TERM + offset;
@@ -100,9 +100,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
         case RSFT_T(KC_F):
-            return TAPPING_TERM - 45;
+            return TAPPING_TERM - 50;
         case LSFT_T(KC_J):
-            return TAPPING_TERM - 45;
+            return TAPPING_TERM - 50;
         /*case TD(TD_LEFT_HOME_THUMB):*/
         /*    return TAPPING_TERM - 50;*/
         default:
@@ -127,8 +127,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
             return true;
         case RCTL_T(KC_K):
             return true;
-        case TD(TD_LEFT_HOME_THUMB):
-            return true;
+        /*case TD(TD_LEFT_HOME_THUMB):*/
+        /*    return true;*/
         default:
             // Do not select the hold action when another key is tapped.
             return false;
