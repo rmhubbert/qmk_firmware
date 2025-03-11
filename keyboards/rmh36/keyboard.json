@@ -38,7 +38,7 @@
         "vid": "0xFEED"
     },
     "layouts": {
-        "LAYOUT_split_3x5_1_2": {
+        "LAYOUT_split_3x6_2": {
             "layout": [
                 { "matrix": [0, 1], "x": 1, "y": 0 },
                 { "matrix": [0, 2], "x": 2, "y": 0 },
@@ -93,7 +93,7 @@
         "enabled": true
     },
     "tapping": {
-        "term": 180,
+        "term": 200,
         "term_per_key": true,
         "permissive_hold": true,
         "permissive_hold_per_key": true
