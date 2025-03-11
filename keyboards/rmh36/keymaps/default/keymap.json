@@ -4,7 +4,7 @@
     "keyboard": "rmh36",
     "keymap": "rmh36_reversible",
     "layout": "LAYOUT_split_3x6_2",
-    "macros": [[":="], ["->"], ["=>"]],
+    "macros": [[":="], ["->"], ["=>"] ["$this->"]],
     "layers": [
         [
             "KC_Q",
@@ -234,7 +234,7 @@
         [
             "KC_NO",
             "KC_NO",
-            "KC_NO",
+            "QK_MACRO_3",
             "KC_NO",
             "KC_NO",
 
