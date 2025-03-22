@@ -17,7 +17,8 @@ void keyboard_pre_init_user(void) {
  * @return
  */
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    uint16_t offset = 100;
+    uint16_t offset       = 100;
+    uint16_t shift_offset = 100;
     switch (keycode) {
         case LGUI_T(KC_A):
             return TAPPING_TERM + offset;
@@ -28,9 +29,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
         case RSFT_T(KC_F):
-            return TAPPING_TERM - 50;
+            return TAPPING_TERM - shift_offset;
         case LSFT_T(KC_J):
-            return TAPPING_TERM - 50;
+            return TAPPING_TERM - shift_offset;
         default:
             return TAPPING_TERM;
     }

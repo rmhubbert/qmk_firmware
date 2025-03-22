@@ -64,12 +64,12 @@
             "KC_MINS",
             "KC_EQL",
 
-            "KC_ESC",
+            "KC_TRNS",
             "OSL(2)",
             "LSFT(KC_NUBS)",
-            "RSFT(KC_QUOT)",
-            "KC_LSFT",
             "KC_NUBS",
+            "RSFT(KC_QUOT)",
+            "LALT(KC_3)",
 
             "KC_LEFT",
             "KC_DOWN",
@@ -78,15 +78,15 @@
             "KC_QUOT",
             "KC_ENT",
 
-            "LSFT(KC_NUHS)",
+            "KC_NO",
             "KC_NO",
             "KC_NO",
             "KC_NO",
             "KC_NO",
 
             "KC_NO",
+            "LSFT(KC_NUHS)",
             "KC_PLUS",
-            "LALT(KC_3)",
             "KC_UNDS",
             "KC_NUHS",
 
@@ -154,7 +154,7 @@
             "KC_PMNS",
             "KC_PEQL",
 
-            "KC_ESC",
+            "KC_TRNS",
             "KC_1",
             "KC_2",
             "KC_3",
