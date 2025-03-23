@@ -45,7 +45,7 @@
             "KC_DOT",
             "KC_SLSH",
 
-            "LT(4, KC_ESC)",
+            "OSL(2)",
             "OSL(1)",
 
             "LT(3,KC_SPC)",
@@ -65,7 +65,7 @@
             "KC_EQL",
 
             "KC_TRNS",
-            "OSL(2)",
+            "OSL(4)",
             "LSFT(KC_NUBS)",
             "KC_NUBS",
             "KC_LSFT",
