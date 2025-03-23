@@ -68,7 +68,7 @@
             "OSL(2)",
             "LSFT(KC_NUBS)",
             "KC_NUBS",
-            "RSFT(KC_QUOT)",
+            "KC_LSFT",
             "LALT(KC_3)",
 
             "KC_LEFT",
@@ -107,7 +107,7 @@
             "KC_RPRN",
             "KC_RCBR",
             "KC_RBRC",
-            "KC_GT",
+            "KC_NUBS",
 
             "KC_TRNS",
             "KC_TRNS",
@@ -120,7 +120,7 @@
             "KC_LPRN",
             "KC_LCBR",
             "KC_LBRC",
-            "KC_LT",
+            "RSFT(KC_QUOT)",
             "KC_TRNS",
 
             "KC_NO",
