@@ -19,7 +19,7 @@
             "KC_O",
             "KC_P",
 
-            "KC_ESC",
+            "LT(4,KC_ESC)",
             "LGUI_T(KC_A)",
             "LALT_T(KC_S)",
             "LCTL_T(KC_D)",
@@ -65,7 +65,7 @@
             "KC_EQL",
 
             "KC_TRNS",
-            "OSL(4)",
+            "LSFT(KC_QUOT)",
             "LSFT(KC_NUBS)",
             "KC_NUBS",
             "KC_LSFT",
@@ -107,7 +107,7 @@
             "KC_RPRN",
             "KC_RCBR",
             "KC_RBRC",
-            "KC_NUBS",
+            "KC_NO",
 
             "KC_TRNS",
             "KC_TRNS",
@@ -120,7 +120,7 @@
             "KC_LPRN",
             "KC_LCBR",
             "KC_LBRC",
-            "LSFT(KC_QUOT)",
+            "KC_NUBS",
             "KC_TRNS",
 
             "KC_NO",
