@@ -46,11 +46,11 @@
             "KC_DOT",
             "KC_SLSH",
 
-            "OSM(MOD_LALT|MOD_LGUI)",
+            "OSM(MOD_LCTL|MOD_LALT)",
             "OSL(1)",
 
             "LT(3,KC_SPC)",
-            "OSM(MOD_LALT|MOD_LGUI)"
+            "OSM(MOD_LCTL|MOD_LALT)"
         ],
         [
             "KC_EXLM",
@@ -68,7 +68,7 @@
             "KC_TRNS",
             "OSL(2)",
             "LSFT(KC_NUBS)",
-            "LALT(KC_3)",
+            "RALT(KC_3)",
             "KC_LSFT",
             "KC_TILD",
 
@@ -169,10 +169,10 @@
             "KC_0",
             "KC_TRNS",
 
-            "KC_NO",
-            "KC_NO",
-            "KC_NO",
-            "KC_NO",
+            "KC_UNDO",
+            "KC_CUT",
+            "KC_COPY",
+            "KC_PSTE",
             "KC_NO",
 
             "KC_NO",
