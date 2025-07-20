@@ -5,7 +5,20 @@
     "author": "rmhubbert",
     "keymap": "rmh36_reversible",
     "layout": "LAYOUT_split_3x6_2",
-    "macros": [[":="], ["->"], ["$this->"], ["=>"]],
+    "macros": [
+        [":="],
+        ["->"],
+        ["$this->"],
+        ["=>"],
+        ["[f"],
+        ["]f"],
+        ["[F"],
+        ["]F"],
+        ["[a"],
+        ["]a"],
+        ["[A"],
+        ["]A"]
+    ],
     "layers": [
         [
             "KC_Q",
@@ -131,10 +144,10 @@
             "KC_NO",
 
             "KC_NO",
-            "QK_MACRO_0",
-            "QK_MACRO_1",
-            "QK_MACRO_2",
-            "QK_MACRO_3",
+            "KC_NO",
+            "KC_NO",
+            "KC_NO",
+            "KC_NO",
 
             "KC_TRNS",
             "KC_NO",
@@ -195,10 +208,10 @@
             "KC_NO",
 
             "KC_NO",
-            "KC_CAPS",
-            "CW_TOGG",
-            "KC_NO",
-            "KC_NO",
+            "QK_MACRO_8",
+            "QK_MACRO_9",
+            "QK_MACRO_10",
+            "QK_MACRO_11",
 
             "KC_TRNS",
             "KC_NO",
@@ -208,10 +221,10 @@
             "KC_NO",
 
             "KC_NO",
-            "KC_MUTE",
-            "KC_VOLD",
-            "KC_VOLU",
-            "KC_NO",
+            "QK_MACRO_4",
+            "QK_MACRO_5",
+            "QK_MACRO_6",
+            "QK_MACRO_7",
             "KC_TRNS",
 
             "KC_NO",
@@ -221,10 +234,10 @@
             "KC_NO",
 
             "KC_NO",
-            "KC_NO",
-            "KC_NO",
-            "KC_NO",
-            "KC_NO",
+            "QK_MACRO_0",
+            "QK_MACRO_1",
+            "QK_MACRO_2",
+            "QK_MACRO_3",
 
             "KC_TRNS",
             "KC_TRNS",
@@ -235,8 +248,8 @@
         [
             "QK_BOOT",
             "KC_NO",
-            "KC_NO",
-            "KC_NO",
+            "KC_CAPS",
+            "CW_TOGG",
             "KC_NO",
 
             "KC_F1",
@@ -245,12 +258,12 @@
             "KC_F4",
             "KC_F5",
 
+            "KC_NO",
+            "KC_NO",
+            "KC_MUTE",
+            "KC_VOLD",
+            "KC_VOLU",
             "KC_TRNS",
-            "KC_NO",
-            "KC_NO",
-            "KC_NO",
-            "KC_NO",
-            "KC_NO",
 
             "KC_F6",
             "KC_F7",
@@ -261,8 +274,8 @@
 
             "KC_NO",
             "KC_NO",
-            "KC_NO",
-            "KC_NO",
+            "KC_BRID",
+            "KC_BRIU",
             "KC_NO",
 
             "KC_F11",

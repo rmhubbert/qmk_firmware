@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include QMK_KEYBOARD_H
 #include "gpio.h"
 
@@ -45,6 +46,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
  * @return
  */
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    return false;
     switch (keycode) {
         case LSFT_T(KC_F):
             return true;
