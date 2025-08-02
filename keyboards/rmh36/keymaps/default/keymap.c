@@ -18,8 +18,8 @@ void keyboard_pre_init_user(void) {
  * @return
  */
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    uint16_t offset       = 100;
-    uint16_t shift_offset = 120;
+    uint16_t offset       = 10;
+    uint16_t shift_offset = 20;
     switch (keycode) {
         case LGUI_T(KC_A):
             return TAPPING_TERM + offset;
@@ -29,9 +29,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + offset;
         case RALT_T(KC_L):
             return TAPPING_TERM + offset;
-        case RSFT_T(KC_F):
+        case LSFT_T(KC_F):
             return TAPPING_TERM - shift_offset;
-        case LSFT_T(KC_J):
+        case RSFT_T(KC_J):
             return TAPPING_TERM - shift_offset;
         default:
             return TAPPING_TERM;
@@ -48,13 +48,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     return false;
     switch (keycode) {
-        case LSFT_T(KC_F):
+        case RSFT_T(KC_F):
             return true;
-        case LCTL_T(KC_D):
+        case RCTL_T(KC_D):
             return true;
-        case RSFT_T(KC_J):
+        case LSFT_T(KC_J):
             return true;
-        case RCTL_T(KC_K):
+        case LCTL_T(KC_K):
             return true;
         default:
             return false;
